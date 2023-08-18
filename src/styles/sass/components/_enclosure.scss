@@ -1,0 +1,201 @@
+.enclosure {
+  --_enclosure-width: clamp(3.75rem, 2.1786rem + 7.8571vw, 9.25rem);
+  --_flap-font-size: clamp(2rem, 1.1429rem + 4.2857vw, 5rem);
+  --_perspective: 1020px;
+  --_animation-duration: 0.1s;
+  --_bg-dark: var(--clr-n-200);
+  --_bg-light: var(--clr-n-150);
+  --_clr-dark: var(--clr-p-100);
+  --_clr-light: var(--clr-p-150);
+  --_front-side-num: "00";
+  --_back-side-num: "00";
+  --_top-side-num: "00";
+  --_bottom-side-num: "00";
+  position: relative;
+  width: var(--_enclosure-width);
+  aspect-ratio: 1;
+  background-color: transparent;
+  box-shadow: 0px 8px 5px rgb(9, 11, 20);
+  border-radius: var(--border-radius);
+
+  &__flap {
+    --_transform-lettering: 0%;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+  }
+
+  &__flap--top {
+    --_side-num: var(--_top-side-num);
+    --_transform-lettering: 0%;
+    --_color: var(--_clr-dark);
+    background-color: var(--_bg-dark);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+  }
+
+  &__flap--bottom {
+    --_side-num: var(--_bottom-side-num);
+    --_transform-lettering: -50%;
+    --_color: var(--_clr-light);
+    bottom: 0;
+    background-color: var(--_bg-light);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  &__flap--middle {
+    perspective: var(--_perspective);
+  }
+
+}
+
+.middle-flap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+
+  &-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    top: 0;
+    overflow: hidden;
+  }
+
+  &-face__front {
+    --_side-num: var(--_front-side-num);
+    --_transform-lettering: 0%;
+    --_color: var(--_clr-dark);
+    /* backface-visibility wouldn't work until transform: rotateY(0deg) was used, It's like telling the browser which is th front, It was weird cause it was working fine without adding transform */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    background-color: var(--_bg-dark);
+  }
+
+  &-face__back {
+    --_side-num: var(--_back-side-num);
+    --_transform-lettering: 0%;
+    --_color: var(--_clr-light);
+    background-color: var(--_bg-light);
+  }
+
+
+}
+
+.lettering {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &::after {
+    content: var(--_side-num);
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    font-size: var(--_flap-font-size);
+    font-weight: bold;
+    color: var(--_color);
+    text-align: center;
+    line-height: var(--_enclosure-width);
+    transform: translateY(var(--_transform-lettering));
+  }
+
+  &--back::after {
+    scale: 1 -1;
+  }
+
+  &__hole {
+    --_transformY: 0%;
+    --_transformX: 0%;
+    position: absolute;
+    display: block;
+    width: 16%;
+    transform: translateX(var(--_transformX)) translateY(var(--_transformY));
+    aspect-ratio: 1;
+    background-color: var(--clr-n-300);
+    border-radius: 50%;
+  }
+
+  &__hole--back-left {
+    --_transformY: 50%;
+    --_transformX: 50%;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__hole--back-right {
+    --_transformY: 50%;
+    --_transformX: -50%;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__hole--front-right {
+    --_transformY: 50%;
+    --_transformX: -50%;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__hole--front-left {
+    --_transformY: 50%;
+    --_transformX: 50%;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__hole--bottom-left {
+    --_transformY: -50%;
+    --_transformX: 50%;
+    top: 0;
+    right: 0;
+  }
+
+  &__hole--bottom-right {
+    --_transformY: -50%;
+    --_transformX: -50%;
+    top: 0;
+    left: 0;
+  }
+
+  &__hole--top-right {
+    --_transformY: 50%;
+    --_transformX: -50%;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__hole--top-left {
+    --_transformY: 50%;
+    --_transformX: 50%;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+
+
+
+.animate {
+  animation: rotate var(--_animation-duration) cubic-bezier(0.64, 0, 0.78, 0) infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(-0deg);
+  }
+
+  50% {
+    transform: rotateX(-180deg);
+  }
+
+  100% {
+    transform: rotateX(-180deg);
+  }
+}

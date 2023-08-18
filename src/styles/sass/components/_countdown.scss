@@ -1,0 +1,26 @@
+@use "../abstract/mixins" as *;
+
+.countdown {
+  display: flex;
+  max-width: 690px;
+  justify-content: space-between;
+  margin-inline: auto;
+  gap: clamp(0.9375rem, 0.6339rem + 1.5179vw, 2rem);
+
+  margin-top: 7em;
+
+  @include respond-to("medium") {
+    margin-top: 4em;
+  }
+
+
+  &__labels {
+    width: min-content;
+    margin-top: 1.5em;
+    margin-inline: auto;
+
+    @include respond-to("small") {
+      font-size: .5rem;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+$type-scales: (
+  p: (100: clamp(0.62rem, 0.05vw + 0.61rem, 0.66rem),
+    200: clamp(0.78rem, 0.06vw + 0.76rem, 0.82rem),
+    300: clamp(0.97rem, 0.07vw + 0.96rem, 1.03rem),
+    400: clamp(1.21rem, 0.09vw + 1.19rem, 1.29rem),
+    500: clamp(1.52rem, 0.11vw + 1.49rem, 1.61rem),
+    600: clamp(1.9rem, 0.14vw + 1.87rem, 2.01rem),
+    700: clamp(2.37rem, 0.17vw + 2.33rem, 2.51rem),
+    800: clamp(2.96rem, 0.22vw + 2.91rem, 3.14rem),
+    900: clamp(3.71rem, 0.27vw + 3.64rem, 3.92rem),
+  ),
+);
+
+$type-faces: (
+  p: 'Red Hat Text',
+);
+$weights: (
+  p: (bold: 700,
+  ),
+);

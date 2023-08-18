@@ -1,0 +1,20 @@
+@use "../abstract/mixins" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.header {
+  margin-top: 11.1em;
+  letter-spacing: .4em;
+  text-align: center;
+  line-height: 1.2;
+
+  @include respond-to("small") {
+    margin-top: 6em;
+    letter-spacing: .2em;
+  }
+}

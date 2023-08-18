@@ -1,0 +1,19 @@
+.social-list {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  position: absolute;
+  bottom: 8vh;
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__icon:hover path {
+    fill: var(--clr-p-100);
+  }
+}
+
+path {
+  transition: all 150ms ease-in-out;
+}

@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution](https://www.frontendmentor.io/solutions/ip-address-tracker-scss-javascript-fetchcsshtml-Jf-s8MO7sd)
+- [Solution](https://www.frontendmentor.io/solutions/launch-countdown-timer-with-sound-and-accessibility-in-mind-gp_raigYGW)
 - [Live Site](https://hassaneljebyly.github.io/launch-countdown-timer/public/)
 
 ## My process
